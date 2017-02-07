@@ -1,0 +1,59 @@
+body {
+	background-color: #99ff99;
+}
+
+h1, h2, #burgeradd{
+	text-align: center;
+}
+
+ul {
+	list-style: none;
+}
+
+.item {
+
+	display: block;
+}
+
+
+#uneatenburgers {
+	margin-left: 10%;
+	width: 30%;
+	display: inline-block;
+}
+
+#uneatenburgers li {
+	background-color: lightgray;
+}
+
+
+#eatenburgers {
+	margin-right: 10%;
+	width: 30%;
+	display: inline-block;
+
+}
+
+#eatenburgers li {
+	background-color: lightgray;
+}
+
+#burgerimage {
+	width: 20%;
+	margin-left: 40%;
+
+
+}
+
+.burgerbutton {
+	display: inline-block;
+	float: right;
+	margin-top: -18px;
+
+
+}
+/*
+.formburger {
+	display: inline-block;
+}*/
+

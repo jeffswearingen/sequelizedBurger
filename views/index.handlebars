@@ -1,0 +1,47 @@
+<h1>Eat-Da-Burger</h1>
+<img id="burgerimage" src="/assets/hamburger.png">
+<br>
+<!-- pass data via server.js -->
+<div>
+<ul id="uneatenburgers">
+	{{#each burgers}}
+		{{#unless this.devoured}}
+			<div class="item">
+			<li>
+				{{this.id}}. {{this.burger_name}}
+
+				
+				
+				
+			</li>
+				<form class="formburger" action="index/update/{{this.id}}?_method=PUT" method="POST">
+						<input type="hidden" name="devoured" value="1">
+						<button class="burgerbutton" method="submit">Devour it</button>
+					</form>
+			</div>
+		{{/unless}}
+	{{/each}}
+</ul>
+
+
+<ul id="eatenburgers">
+	{{#each burgers}}
+		{{#if this.devoured}}
+			<li>
+				{{this.id}}. {{this.burger_name}}
+			</li>
+		{{/if}}
+	{{/each}}
+</ul>
+</div>
+
+<h2>Add a Burger</h2>
+
+{{!--Form should send a post command to the server--}}
+<form id="burgeradd" action="index/create" method="POST">
+	<div>
+		<label for="burg">Make a burger</label>
+		<input type="text" placeholder="insert burger type here" name="burger_name">
+	</div>
+	<button class="burgerbuttonadd" type="submit">Add a Burger</button>
+</form>
