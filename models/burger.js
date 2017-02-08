@@ -28,7 +28,7 @@
 // module.exports = burger;
 
 module.exports = function(sequelize, DataTypes) {
-	var Burger = sequelize.define("Burger", {
+	return sequelize.define("Burger", {
 		id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,

@@ -4,6 +4,7 @@
 var express = require('express');
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
+var Sequelize = require('Sequelize');
 
 // setup express server
 var app = express();
