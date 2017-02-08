@@ -3,7 +3,6 @@ var sequelize = require('../config/connection.js');
 
 //create a model of the table for sequelize
 var Burgers = sequelize.define('burgers', {
-        //validate len will check if the title submitted will be between 6 and 15 letters
         burger_name: {
             type: Sequelize.STRING,
             unique: true,

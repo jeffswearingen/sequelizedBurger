@@ -5,6 +5,9 @@ var bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({extended: true}));
 
+
+// Express Routes
+//=================================================
 router.get('/', function (req, res) {
     res.redirect('/index');
 });
