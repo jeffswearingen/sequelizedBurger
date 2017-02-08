@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "database_development",
+    "password": "root",
+    "database": "burgers_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
@@ -14,11 +14,6 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "emaphkfquve58dwd",
-    "password": nfubfa6oogn4bzb3,
-    "database": "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
-    ",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "use_env_variable": "JAWSDB_URL"
   }
 }

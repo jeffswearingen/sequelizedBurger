@@ -10,11 +10,20 @@ var Sequelize = require('Sequelize');
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+var db = require("./models");
+
+app.use(bodyParser.json());
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api + json"}));
+
 // serve the static css file from the public directory
 app.use(express.static(process.cwd() + "/public"));
 
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
+
+require("./routes/html-routes.js");
+require("./routes/api-routes.js");
 
 app.use(methodOverride("_method"));
 var exphbs = require("express-handlebars");
@@ -28,10 +37,10 @@ var routes = require('./controllers/burgers_controller');
 
 // use routes
 app.use('/', routes);
+app.use('/update', routes);
+app.use('/create', routes);
 
 // initialize server on port
-db.sequelize.sync({ force: true }).then(function() {
-    app.listen(PORT, function () {
-        console.log("Listening on PORT " + PORT);
-    });
+app.listen(PORT, function () {
+    console.log("Listening on PORT " + PORT);
 });

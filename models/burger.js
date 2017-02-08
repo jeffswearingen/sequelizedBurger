@@ -25,26 +25,97 @@
 //
 // }
 
+var Sequelize = require('sequelize');
+var sequelize = require('../config/connection.js');
+
 // module.exports = burger;
 
-module.exports = function(sequelize, DataTypes) {
-	return sequelize.define("Burger", {
-		id: {
-			type: DataTypes.INTEGER,
-			autoIncrement: true,
-			primaryKey: true
-		},
-		burger_name: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-		devoured: {
-			type: DataTypes.BOOLEAN,
-			defaultValue: false
-		},
-		date: {
-			type: DataTypes.TIMESTAMP,
-			defaultValue: CURRENT_TIMESTAMP
-		}
-	});
-}
+// module.exports = function(sequelize, DataTypes) {
+
+var Burger = sequelize.define("burgers", {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    burger_name: {
+        type: Sequelize.STRING,
+        validate: {
+            isEmpty: false
+        }
+    },
+    devoured: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+    }
+}, {
+    timestamps: false
+
+});
+Burger.sync();
+
+var burger = {
+    all: function(callback) {
+        Burger.findAll({}).then(function(dbBurger) {
+            callback(dbBurger);
+        });
+    },
+
+    create: function(burger_name, callback) {
+        Burger.create({
+            burger_name: burger_name
+        }).then(function() {
+            callback();
+        });
+    },
+    update: function(id, callback) {
+        Burger.update({
+            devoured: true
+        },{
+            where: { id : id }
+        }).then(function() {
+            callback();
+        });
+    }
+};
+
+module.exports = burger;
+// var db = require("../models");
+//
+//
+// // GET route for getting all of the posts
+// router.get("/index", function (req, res) {
+//     db.Burger.findAll({}).then(function (dbBurger) {
+//         res.render('index', {burger: dbBurger});
+//     });
+// });
+//
+// // CREATE route for adding new burger
+// router.post("/index/create", function (req, res) {
+//     db.Burger.create({
+//         burger_name: req.body.burger_name,
+//         devoured: false,
+//         // date: CURRENT_TIMESTAMP
+//     }).then(function (dbBurger) {
+//         res.redirect("/");
+//     });
+// });
+//
+// router.put("/index/update/:id", function (req, res) {
+//     db.Burger.update({
+//         burger_name: req.body.burger_name,
+//         devoured: true,
+//         date: req.body.date
+//     }, {
+//         where: {
+//             id: req.params.id
+//         }
+//     }).then(function (dbBurger) {
+//         res.redirect("/");
+//     });
+// });
+//
+//
+// module.exports = router;
+
+// module.exports = burger;
