@@ -4,7 +4,7 @@
 var express = require('express');
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
-var Sequelize = require('Sequelize');
+var Sequelize = require('sequelize');
 
 // setup express server
 var app = express();
@@ -41,6 +41,7 @@ app.use('/update', routes);
 app.use('/create', routes);
 
 // initialize server on port
+
 app.listen(PORT, function () {
     console.log("Listening on PORT " + PORT);
 });
